@@ -1,0 +1,61 @@
+name: RADAR · barrido JobSpy
+
+# 06:00 hora de Madrid (04:00 UTC en verano, 05:00 en invierno).
+# Se deja a las 04:00 UTC para que en verano salga a las 06:00 y en
+# invierno a las 05:00 — en ambos casos antes del runChunk de RADAR.
+on:
+  schedule:
+    - cron: '0 4 * * *'
+  workflow_dispatch:        # permite lanzarlo a mano desde la pestaña Actions
+
+permissions:
+  contents: write           # necesario para que el bot pueda hacer commit
+
+jobs:
+  barrido:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Instalar dependencias
+        run: pip install python-jobspy pandas
+
+      - name: Ejecutar el barrido
+        run: python3 jobspy_radar.py
+        continue-on-error: true      # un fallo parcial no debe romper el commit
+
+      - name: Publicar el CSV que lee RADAR
+        run: |
+          set -e
+          ULTIMO=$(ls -t resultados/radar_*.csv 2>/dev/null | head -1)
+          if [ -z "$ULTIMO" ]; then
+            echo "Sin CSV nuevo: el barrido no produjo resultados. No se toca latest.csv."
+            exit 0
+          fi
+          FILAS=$(( $(wc -l < "$ULTIMO") - 1 ))
+          echo "Barrido: $FILAS ofertas en $ULTIMO"
+
+          # Salvaguarda: no sustituir un latest.csv bueno por uno vacío o roto.
+          if [ "$FILAS" -lt 20 ]; then
+            echo "Solo $FILAS ofertas — sospechoso (bloqueo o rate-limit)."
+            echo "Se conserva el latest.csv anterior."
+            exit 0
+          fi
+          cp "$ULTIMO" resultados/latest.csv
+          echo "FILAS=$FILAS" >> $GITHUB_ENV
+
+      - name: Guardar en el repositorio
+        run: |
+          git config user.name  "radar-bot"
+          git config user.email "radar-bot@users.noreply.github.com"
+          git add resultados/ || true
+          git diff --staged --quiet && echo "Sin cambios" || \
+            git commit -m "Barrido $(date -u +%Y-%m-%d): ${FILAS:-?} ofertas"
+          git push
