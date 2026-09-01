@@ -1,0 +1,467 @@
+{
+  "_schema_version": "5.4",
+  "_verificado": "2026-08-31 (sondas HTTP en vivo, este dictamen)",
+  "_nota_lever": "API pública Lever v0 MUERTA globalmente (404 en 6/6 slugs; v1 exige OAuth). No reactivar sin re-verificar.",
+  "_cambios_v5_4": [
+    "gh-openai DESACTIVADO: 404 verificado hoy. Sustituido por ash-openai (200 verificado).",
+    "sm-onionlab DESACTIVADO: sitemap 404 verificado hoy. Arena lo dejó enabled:true sin verificar.",
+    "ash-notion marcado verified tras sonda 200.",
+    "Toda fuente activa lleva ahora campo verified. Sin verified no se activa."
+  ],
+  "defaults": {
+    "userAgent": "ADHB-Radar/5.4",
+    "timeoutMs": 20000,
+    "retries": 3
+  },
+  "scoring": {
+    "tierThresholds": {
+      "P1": 75,
+      "P2": 60,
+      "P3": 45
+    },
+    "_nota": "Nada se descarta en silencio. tier DESCARTE va a la pestaña Descartes con motivo."
+  },
+  "feeds": [
+    {
+      "id": "gh-ogilvy",
+      "type": "greenhouse",
+      "slug": "ogilvy",
+      "enabled": true,
+      "lane": "AGENCIA_GLOBAL",
+      "region": "ES/EU",
+      "cadence": "daily",
+      "verified": "2026-08-31"
+    },
+    {
+      "id": "gh-scopely",
+      "type": "greenhouse",
+      "slug": "scopely",
+      "enabled": true,
+      "lane": "GAMES",
+      "region": "ES",
+      "cadence": "daily",
+      "verified": "2026-08-31",
+      "nota": "roleFactor 0.75 anti-games"
+    },
+    {
+      "id": "gh-dept",
+      "type": "greenhouse",
+      "slug": "dept",
+      "enabled": true,
+      "lane": "AGENCIA_GLOBAL",
+      "region": "EU",
+      "cadence": "daily",
+      "verified": "2026-08-31"
+    },
+    {
+      "id": "gh-typeform",
+      "type": "greenhouse",
+      "slug": "typeform",
+      "enabled": true,
+      "lane": "PRODUCT_EU",
+      "region": "EU",
+      "cadence": "daily",
+      "verified": "2026-08-31",
+      "nota": "HQ Barcelona. Alta conversión esperada."
+    },
+    {
+      "id": "gh-anthropic",
+      "type": "greenhouse",
+      "slug": "anthropic",
+      "enabled": true,
+      "lane": "AI_US",
+      "region": "US_REMOTE",
+      "cadence": "daily",
+      "verified": "2026-08-31",
+      "langRisk": "ALTO"
+    },
+    {
+      "id": "sr-boschgroup",
+      "type": "smartrecruiters",
+      "company": "BoschGroup",
+      "enabled": true,
+      "lane": "ENTERPRISE",
+      "region": "EU",
+      "cadence": "daily",
+      "verified": "2026-08-31",
+      "nota": "Canal de OP-0045"
+    },
+    {
+      "id": "sr-publicisgroupe",
+      "type": "smartrecruiters",
+      "company": "publicisgroupe",
+      "enabled": true,
+      "lane": "AGENCIA_GLOBAL",
+      "region": "ES/EU",
+      "cadence": "daily",
+      "verified": "2026-08-31",
+      "nota": "Leo Burnett, Saatchi, Marcel España"
+    },
+    {
+      "id": "ash-openai",
+      "type": "ashby",
+      "slug": "openai",
+      "enabled": true,
+      "lane": "AI_US",
+      "region": "US_REMOTE",
+      "cadence": "daily",
+      "verified": "2026-08-31",
+      "langRisk": "ALTO",
+      "nota": "NUEVO v5.4: greenhouse:openai da 404; Ashby responde 200."
+    },
+    {
+      "id": "ash-midjourney",
+      "type": "ashby",
+      "slug": "midjourney",
+      "enabled": true,
+      "lane": "AI_US",
+      "region": "US_REMOTE",
+      "cadence": "daily",
+      "verified": "2026-08-31"
+    },
+    {
+      "id": "ash-perplexity",
+      "type": "ashby",
+      "slug": "perplexity",
+      "enabled": true,
+      "lane": "AI_US",
+      "region": "US_REMOTE",
+      "cadence": "daily",
+      "verified": "2026-08-31"
+    },
+    {
+      "id": "ash-vercel",
+      "type": "ashby",
+      "slug": "vercel",
+      "enabled": true,
+      "lane": "PRODUCT_US",
+      "region": "US_REMOTE",
+      "cadence": "daily",
+      "verified": "2026-08-31",
+      "nota": "MIGRADO desde lever"
+    },
+    {
+      "id": "ash-elevenlabs",
+      "type": "ashby",
+      "slug": "elevenlabs",
+      "enabled": true,
+      "lane": "AI_EU",
+      "region": "EU/UK",
+      "cadence": "daily",
+      "verified": "2026-08-31",
+      "nota": "MIGRADO desde lever"
+    },
+    {
+      "id": "ash-notion",
+      "type": "ashby",
+      "slug": "notion",
+      "enabled": true,
+      "lane": "PRODUCT_US",
+      "region": "US_REMOTE",
+      "cadence": "daily",
+      "verified": "2026-08-31"
+    },
+    {
+      "id": "jobicy-design",
+      "type": "jobicy",
+      "url": "https://jobicy.com/api/v2/remote-jobs?count=50&tag=design",
+      "enabled": true,
+      "lane": "REMOTE",
+      "region": "WORLDWIDE",
+      "cadence": "daily",
+      "verified": "2026-08-31",
+      "nota": "industry=design devuelve 400; usar tag=design"
+    },
+    {
+      "id": "remotive-design",
+      "type": "remotive",
+      "url": "https://remotive.com/api/remote-jobs?category=design&limit=50",
+      "enabled": true,
+      "lane": "REMOTE",
+      "region": "WORLDWIDE",
+      "cadence": "daily",
+      "verified": "2026-08-31"
+    },
+    {
+      "id": "wwr-design",
+      "type": "rss",
+      "url": "https://weworkremotely.com/categories/remote-design-jobs.rss",
+      "enabled": true,
+      "lane": "REMOTE",
+      "region": "WORLDWIDE",
+      "cadence": "daily",
+      "verified": "2026-08-31"
+    },
+    {
+      "id": "sm-sixnfive",
+      "type": "sitemap",
+      "url": "https://www.sixnfive.com/sitemap.xml",
+      "enabled": false,
+      "lane": "BCN_BOUTIQUE",
+      "region": "BCN",
+      "cadence": "weekly",
+      "routeHint": "(career|jobs|join|talent|empleo|work-with)",
+      "motivo_baja": "Su servidor devuelve avisos PHP de WordPress antes del XML (SAXException verificado 1-sep-2026). Roto en origen, no reactivar hasta que ellos lo arreglen."
+    },
+    {
+      "id": "sm-morillas",
+      "type": "sitemap",
+      "url": "https://morillas.com/sitemap.xml",
+      "enabled": true,
+      "lane": "BCN_BOUTIQUE",
+      "region": "BCN",
+      "cadence": "weekly",
+      "routeHint": "(career|jobs|join|talent|empleo|work-with)",
+      "verified": "2026-08-31"
+    },
+    {
+      "id": "sm-onionlab",
+      "type": "sitemap",
+      "url": "https://onionlab.com/sitemap.xml",
+      "enabled": false,
+      "motivo_baja": "404 verificado 2026-08-31. Arena la dejó activa sin sondear. Localizar sitemap real antes de reactivar."
+    },
+    {
+      "id": "gh-openai",
+      "type": "greenhouse",
+      "slug": "openai",
+      "enabled": false,
+      "motivo_baja": "404 verificado 2026-08-31. Sustituida por ash-openai."
+    },
+    {
+      "id": "gh-wallbox",
+      "type": "greenhouse",
+      "slug": "wallbox",
+      "enabled": false,
+      "motivo_baja": "404 verificado 2026-08-31. Re-mapear ATS real."
+    },
+    {
+      "id": "gh-travelperk",
+      "type": "greenhouse",
+      "slug": "travelperk",
+      "enabled": false,
+      "motivo_baja": "404 verificado 2026-08-31. Re-mapear ATS real."
+    },
+    {
+      "id": "gh-factorial",
+      "type": "greenhouse",
+      "slug": "factorial",
+      "enabled": false,
+      "motivo_baja": "404 verificado 2026-08-31. Re-mapear ATS real (patterson.factorialhr.com sugiere Factorial como ATS de terceros, no board propio)."
+    },
+    {
+      "id": "lever-TODOS",
+      "type": "lever",
+      "enabled": false,
+      "motivo_baja": "API v0 MUERTA (404 global, v1=401). No reactivar sin re-verificación."
+    },
+    {
+      "id": "himalayas",
+      "type": "himalayas",
+      "url": "https://himalayas.app/jobs/api?limit=100",
+      "enabled": true,
+      "lane": "REMOTE",
+      "region": "WORLDWIDE",
+      "cadence": "daily",
+      "verified": "2026-09-01",
+      "nota": "API abierta. Remoto global con restricciones de país declaradas."
+    },
+    {
+      "id": "arbeitnow",
+      "type": "arbeitnow",
+      "url": "https://www.arbeitnow.com/api/job-board-api",
+      "enabled": true,
+      "lane": "PRODUCT_EU",
+      "region": "EU",
+      "cadence": "daily",
+      "verified": "2026-09-01",
+      "nota": "API abierta. 175 ofertas UE, mayoría Alemania y remoto europeo."
+    },
+    {
+      "id": "getonboard",
+      "type": "getonboard",
+      "url": "https://www.getonbrd.com/api/v0/search/jobs?query=design&per_page=50",
+      "enabled": true,
+      "lane": "LATAM",
+      "region": "LATAM/ES",
+      "cadence": "daily",
+      "verified": "2026-09-01",
+      "nota": "API abierta. LATAM y España, sector diseño y producto."
+    },
+    {
+      "id": "apify-linkedin",
+      "type": "apify",
+      "actor": "curious_coder~linkedin-jobs-scraper",
+      "enabled": false,
+      "lane": "LINKEDIN",
+      "region": "ES/EU",
+      "cadence": "daily",
+      "limite": 200,
+      "campos": {
+        "title": "title",
+        "company": "companyName",
+        "location": "location",
+        "url": "jobUrl",
+        "published": "postedAt",
+        "description": "descriptionText"
+      },
+      "nota": "Redundante con JobSpy, que hace lo mismo gratis y en vivo. Solo como respaldo si JobSpy sufre bloqueo cronico. REDUNDANTE si el puente JobSpy funciona: JobSpy raspa LinkedIn e Indeed gratis y en vivo. Mantener solo como respaldo si JobSpy falla por rate-limit. AUTORIZADO. Su mayor fuente. Activar (enabled:true) en cuanto RR_SECRET_APIFY_TOKEN este puesto y el actor haya corrido una vez en Apify. Configurar alli la busqueda: director creativo / creative director / head of design, Barcelona + Madrid + remoto UE. Actor curious_coder elegido por rodaje: 144.957 usuarios, 4x el siguiente (bebity 35k, valig 22k). Si el coste sube, valig es mas barato pero menos probado.",
+      "recomendacion": "✗ NO ENCENDER"
+    },
+    {
+      "id": "apify-indeed",
+      "type": "apify",
+      "actor": "misceres~indeed-scraper",
+      "enabled": false,
+      "lane": "PORTAL_ES",
+      "region": "ES",
+      "cadence": "daily",
+      "limite": 200,
+      "campos": {
+        "title": "positionName",
+        "company": "company",
+        "location": "location",
+        "url": "url",
+        "published": "postingDateParsed",
+        "description": "description"
+      },
+      "nota": "Redundante con JobSpy. Solo respaldo. REDUNDANTE si el puente JobSpy funciona: JobSpy raspa LinkedIn e Indeed gratis y en vivo. Mantener solo como respaldo si JobSpy falla por rate-limit. Indeed cerro su API publica. Actor misceres: 29.982 usuarios, mantenido por Apify. Preferido sobre borderline y curious_coder por rodaje.",
+      "recomendacion": "✗ NO ENCENDER"
+    },
+    {
+      "id": "apify-behance",
+      "type": "apify",
+      "actor": "getdataforme~behance-actor",
+      "enabled": false,
+      "lane": "FREELANCE",
+      "region": "WORLDWIDE",
+      "cadence": "weekly",
+      "limite": 100,
+      "campos": {
+        "title": "jobTitle",
+        "url": "link",
+        "published": "datePosted"
+      },
+      "nota": "Andres trabaja 50% servicios. Encargos puntuales de diseno y direccion. lane FREELANCE: la compuerta de senioridad no lo hunde. Behance: estudios y agencias de diseno, sin API propia.",
+      "recomendacion": "◆ CARRIL FREELANCE — ENCENDER"
+    },
+    {
+      "id": "apify-wellfound",
+      "type": "apify",
+      "actor": "blackfalcondata~wellfound-scraper",
+      "enabled": false,
+      "lane": "FREELANCE",
+      "region": "WORLDWIDE",
+      "cadence": "weekly",
+      "limite": 100,
+      "nota": "Startups: proyectos de marca e identidad puntuales. lane FREELANCE. Startups. Verificar campos con apifyInspeccionar antes de activar.",
+      "recomendacion": "◆ CARRIL FREELANCE — ENCENDER"
+    },
+    {
+      "id": "apify-dribbble",
+      "type": "apify",
+      "actor": "parsebird~dribbble-jobs-scraper",
+      "enabled": false,
+      "lane": "FREELANCE",
+      "region": "WORLDWIDE",
+      "cadence": "weekly",
+      "limite": 100,
+      "nota": "Encargos de direccion de arte y marca. lane FREELANCE. Dribbble: direccion de arte y diseno de marca.",
+      "recomendacion": "◆ CARRIL FREELANCE — ENCENDER"
+    },
+    {
+      "id": "apify-eures",
+      "type": "apify",
+      "actor": "nomad-agent~eures-scraper",
+      "enabled": false,
+      "lane": "UE_PUBLICO",
+      "region": "EU",
+      "cadence": "weekly",
+      "limite": 150,
+      "nota": "89% de exito segun la auditoria de ARENA (poco fiable) y contenido de sector publico y perfiles medios. EURES: portal publico de empleo de la UE.",
+      "recomendacion": "✗ NO ENCENDER"
+    },
+    {
+      "id": "apify-wttj",
+      "type": "apify",
+      "actor": "clearpath~welcome-to-the-jungle-jobs-api",
+      "enabled": false,
+      "lane": "PRODUCT_EU",
+      "region": "EU",
+      "cadence": "weekly",
+      "limite": 150,
+      "nota": "Sobre todo Francia. Lo que aporta en la UE ya lo cubre arbeitnow, que es gratis y ya esta activo. Welcome to the Jungle: producto y creatividad en Francia y Espana.",
+      "recomendacion": "✗ NO ENCENDER"
+    },
+    {
+      "id": "apify-infojobs",
+      "type": "apify",
+      "actor": "easyapi~infojobs-job-scraper",
+      "enabled": false,
+      "lane": "PORTAL_ES",
+      "region": "ES",
+      "cadence": "daily",
+      "limite": 200,
+      "nota": "La mayor bolsa de empleo de Espana y el unico hueco real que queda. ~1$/1K. InfoJobs. Elegido easyapi (256 usuarios) sobre memo23 (20) y haketa (2), que estan practicamente sin rodar. Verificar campos con apifyInspeccionar antes de activar.",
+      "recomendacion": "★ RECOMENDADA — ENCENDER"
+    },
+    {
+      "id": "apify-hiring-posts",
+      "type": "apify",
+      "actor": "apt_marble~linkedin-hiring-posts-scraper",
+      "enabled": false,
+      "lane": "OUTREACH",
+      "region": "ES/EU",
+      "cadence": "weekly",
+      "limite": 60,
+      "nota": "No trae vacantes: trae contactos con nombre para outreach. Otra cosa. Probar un mes y decidir. EXPERIMENTAL (176 usuarios). Detecta posts de \"estamos contratando\" CON NOMBRE del recruiter. No es una vacante: es un contacto humano para outreach directo. Revisar a mano, nunca postular automatico.",
+      "recomendacion": "○ EXPERIMENTAL"
+    },
+    {
+      "id": "ash-docplanner",
+      "type": "ashby",
+      "slug": "docplanner",
+      "enabled": true,
+      "lane": "PRODUCT_EU",
+      "region": "BCN",
+      "cadence": "daily",
+      "verified": "2026-09-01",
+      "nota": "Hub Barcelona. 29 vacantes, 0 creativas hoy, pero conviene vigilarla: es una de las empresas del agujero negro del §17."
+    },
+    {
+      "id": "ash-voodoo",
+      "type": "ashby",
+      "slug": "voodoo",
+      "enabled": true,
+      "lane": "GAMES",
+      "region": "EU",
+      "cadence": "daily",
+      "verified": "2026-09-01",
+      "nota": "104 vacantes, 12 de perfil creativo (Art Director, Lead Creative Manager). Sobre todo Paris, no Barcelona. Del agujero negro del §17."
+    },
+    {
+      "id": "jobspy",
+      "type": "jobspy",
+      "url": "https://raw.githubusercontent.com/andresdiegoherr/radar-jobspy/main/resultados/latest.csv",
+      "enabled": true,
+      "lane": "LINKEDIN_INDEED",
+      "region": "ES/EU/GLOBAL",
+      "cadence": "daily",
+      "verified": "2026-09-01",
+      "nota": "PUENTE JOBSPY ACTIVO. Repo verificado 1-sep: 325 ofertas leidas, 108 al Inbox, 40 de 55 P1/P2 en Espana. Sustituye a apify-linkedin y apify-indeed.",
+      "recomendacion": "★ RECOMENDADA — ENCENDER"
+    }
+  ],
+  "_pendiente_verificacion": [
+    "summa.es y vasava.es: sitemap 404 verificado hoy, localizar ruta real",
+    "Agencias BCN sin sondear: S;C;P;F, China, Fuego Camina Conmigo, Batlle, Folch, Mucho",
+    "Enterprises ES en Workable/Teamtailor/Personio: Glovo, Camper, Puig, Tous"
+  ],
+  "_apify": {
+    "como_activar": "1) Cuenta gratis en apify.com  2) Settings > Integrations > API token  3) Script Properties: RR_SECRET_APIFY_TOKEN  4) Lanzar cada actor UNA vez en Apify y programarlo allí (su planificador es gratis)  5) Poner enabled:true aquí",
+    "coste": "$0.001 por resultado en la mayoría. 600 ofertas/día = 0,60 $. El plan gratuito trae 5 $/mes.",
+    "arquitectura": "Apify ejecuta y programa; Apps Script solo LEE el ultimo dataset. Leer no cuesta.",
+    "diagnostico": "apifyInspeccionar(\"actor~nombre\") muestra los campos reales de ese actor para rellenar \"campos\".",
+    "nota_linkedin": "AUTORIZADO por Andres el 1-sep-2026. La prohibicion de la pestana Configuracion existia para proteger su cuenta del scraping propio. Apify rastrea con SU infraestructura: la cuenta de Andres no interviene en ningun momento y el riesgo para su perfil es cero. Sigue prohibido el scraping directo desde su sesion o con Puppeteer/n8n."
+  }
+}
