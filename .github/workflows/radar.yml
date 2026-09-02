@@ -1,11 +1,19 @@
 name: RADAR · barrido JobSpy
 
-# 06:00 hora de Madrid (04:00 UTC en verano, 05:00 en invierno).
-# Se deja a las 04:00 UTC para que en verano salga a las 06:00 y en
-# invierno a las 05:00 — en ambos casos antes del runChunk de RADAR.
+# GitHub retrasa las tareas programadas cuando tiene carga: el 2-sep se pidió
+# a las 04:00 UTC y se ejecutó a las 08:25 — cuatro horas y media tarde. El
+# digest de RADAR sale a las 09:00 de Madrid (07:00 UTC), así que con ese
+# retraso leía datos del día anterior.
+#
+# Solución: pedirlo a las 23:00 UTC del día previo (01:00 de Madrid). Aunque
+# GitHub lo retrase cinco horas, sigue terminando antes de las 04:00 UTC, muy
+# por delante del digest. Y se añade un segundo intento a las 02:00 UTC por si
+# el primero no llegó a ejecutarse: el barrido es idempotente y la salvaguarda
+# de las 20 ofertas impide que un run flojo pise uno bueno.
 on:
   schedule:
-    - cron: '0 4 * * *'
+    - cron: '0 23 * * *'
+    - cron: '0 2 * * *'
   workflow_dispatch:        # permite lanzarlo a mano desde la pestaña Actions
 
 permissions:
