@@ -46,6 +46,18 @@ BUSQUEDAS = [
     # Especialidades IA / ops (A7, D7, D8) — remoto
     ("creative technologist", "Spain",             "spain",     "espana",    True),
     ("design operations",     "Spain",             "spain",     "espana",    True),
+    # IA creativa (2-sep-2026). Verificado que la puntuación ya separa bien lo
+    # tuyo de lo técnico: "AI Creative Director" da 68/P1 y "Head of AI" 10/P4,
+    # porque el dominio lo carga "creative", no "AI". Faltaba solo buscarlas.
+    ("ai creative director",  "Spain",             "spain",     "espana",    True),
+    ("ai creative director",  "United States",     "usa",       "usa",       True),
+    ("generative ai design",  "Spain",             "spain",     "espana",    True),
+    # UX de dirección (2-sep-2026). La puntuación se arregló en el motor v6.13.0
+    # (antes "Head of UX" daba 6 puntos e era invisible), pero sin estas búsquedas
+    # no llegaría ninguna: ningún término anterior las cubría.
+    ("head of ux",            "Spain",             "spain",     "espana",    False),
+    ("ux director",           "Spain",             "spain",     "espana",    False),
+    ("head of product design","Spain",             "spain",     "espana",    False),
     # Territorio ampliado (Grupo D)
     ("creative director",     "Lisbon, Portugal",  "portugal",  "ue",        False),
     ("creative director",     "London, United Kingdom", "uk",   "uk",        False),
@@ -93,6 +105,10 @@ ROLES_ADMITIDOS = [
     # Tecnología e IA
     "creative technologist", "ai creative", "generative ai",
     "head of creative technology", "creative innovation",
+    "ai creative director", "creative ai", "ai brand",
+    # UX de dirección — añadido 2-sep-2026 junto al arreglo del motor v6.13.0
+    "head of ux", "ux director", "director of ux", "head of product design",
+    "product design director", "experiencia de usuario",
     "creative strategist", "creative strategy",
     # Agencia / negocio / marketing con alcance de marca
     "client partner", "brand marketing director", "head of marketing & brand",
