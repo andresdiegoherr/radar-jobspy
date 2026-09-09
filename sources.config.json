@@ -572,6 +572,86 @@
       "limite": 200,
       "recomendacion": "⏸ APAGADA",
       "nota": "Tarea diaria de InfoJobs en Apify. IMPORTANTE: la ventana debe ser de 24h, no de 7 dias. Medido el 2-sep-2026: con ventana de 7 dias, el 50% de cada ejecucion son ofertas ya vistas que RADAR descarta por duplicado pero Apify cobra igual. Con 24h el coste baja a ~1 EUR/mes. Rendimiento real: 530 crudas -> 4 utiles, todas P3. Revisar el 16-sep-2026 y apagar si no mejora."
+    },
+    {
+      "id": "jg-direccion-creativa",
+      "type": "jobgether",
+      "keywords": [
+        "creative director",
+        "executive creative director",
+        "head of creative"
+      ],
+      "locations": [
+        "spain",
+        "portugal",
+        "france",
+        "germany",
+        "netherlands",
+        "ireland",
+        "italy",
+        "belgium",
+        "united-kingdom"
+      ],
+      "limite": 25,
+      "enabled": true,
+      "lane": "EMPLEO",
+      "region": "EU",
+      "cadence": "daily",
+      "verified": "2026-09-09",
+      "nota": "API publica de Jobgether, sin clave. Ubicaciones limitadas a donde Andres puede trabajar; las ofertas Anywhere y Europe entran igual al consultar por pais."
+    },
+    {
+      "id": "jg-marca-diseno",
+      "type": "jobgether",
+      "keywords": [
+        "head of brand",
+        "brand director",
+        "design director"
+      ],
+      "locations": [
+        "spain",
+        "portugal",
+        "france",
+        "germany",
+        "netherlands",
+        "ireland",
+        "italy",
+        "belgium",
+        "united-kingdom"
+      ],
+      "limite": 25,
+      "enabled": true,
+      "lane": "EMPLEO",
+      "region": "EU",
+      "cadence": "daily",
+      "verified": "2026-09-09",
+      "nota": "Segundo bloque de palabras clave; la deduplicacion de RADAR resuelve los solapes con el primero."
+    },
+    {
+      "id": "jg-arte-ia",
+      "type": "jobgether",
+      "keywords": [
+        "art director",
+        "ai creative director"
+      ],
+      "locations": [
+        "spain",
+        "portugal",
+        "france",
+        "germany",
+        "netherlands",
+        "ireland",
+        "italy",
+        "belgium",
+        "united-kingdom"
+      ],
+      "limite": 25,
+      "enabled": true,
+      "lane": "EMPLEO",
+      "region": "EU",
+      "cadence": "daily",
+      "verified": "2026-09-09",
+      "nota": "Direccion de arte e IA creativa."
     }
   ],
   "_pendiente_verificacion": [
