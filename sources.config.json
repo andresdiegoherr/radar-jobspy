@@ -130,8 +130,8 @@
       "verified": "2026-08-31"
     },
     {
-      "id": "ash-vercel",
-      "type": "ashby",
+      "id": "gh-vercel",
+      "type": "greenhouse",
       "slug": "vercel",
       "enabled": true,
       "lane": "PRODUCT_US",
@@ -514,10 +514,11 @@
       "enabled": true,
       "lane": "PORTAL_ES",
       "region": "ES",
-      "cadence": "daily",
+      "cadence": "twice-weekly",
       "limite": 200,
       "recomendacion": "★ ACTIVA",
-      "nota": "Tarea de InfoJobs en Apify (categoria Marketing and communication, sin palabra clave). El campo \"tarea\" usa el formato \"usuario~nombre-tarea\" (tambien valdria el ID corto de la URL). Con el nombre, si algun dia se borra y se recrea la tarea con el mismo nombre sigue funcionando; a cambio, RENOMBRAR la tarea en Apify rompe la referencia y hay que actualizar este campo. NO vale el ID de una programacion (Schedule): son objetos distintos y la API responde 404. Ventana recomendada en Apify: ultimas 24h."
+      "nota": "Tarea de InfoJobs en Apify (categoria Marketing and communication, sin palabra clave). El campo \"tarea\" usa el formato \"usuario~nombre-tarea\" (tambien valdria e | 09/09/2026: Apify pasa a 2 rastreos por semana; maxAgeHours 96h (4 dias) da un dia de margen sobre los 3,5 de cadencia.",
+      "maxAgeHours": 96
     },
     {
       "id": "ij-diseno",
@@ -553,10 +554,11 @@
       "enabled": true,
       "lane": "PORTAL_ES",
       "region": "ES",
-      "cadence": "daily",
+      "cadence": "twice-weekly",
       "limite": 200,
       "recomendacion": "★ ACTIVA",
-      "nota": "Tarea de InfoJobs en Apify (branding). El campo \"tarea\" usa el formato \"usuario~nombre-tarea\" (tambien valdria el ID corto de la URL). Con el nombre, si algun dia se borra y se recrea la tarea con el mismo nombre sigue funcionando; a cambio, RENOMBRAR la tarea en Apify rompe la referencia y hay que actualizar este campo. NO vale el ID de una programacion (Schedule): son objetos distintos y la API responde 404. Ventana recomendada en Apify: ultimas 24h."
+      "nota": "Tarea de InfoJobs en Apify (branding). El campo \"tarea\" usa el formato \"usuario~nombre-tarea\" (tambien valdria el ID corto de la URL). Con el nombre, si algun d | 09/09/2026: Apify pasa a 2 rastreos por semana; maxAgeHours 96h (4 dias) da un dia de margen sobre los 3,5 de cadencia.",
+      "maxAgeHours": 96
     },
     {
       "id": "ij-publicidad",
@@ -583,5 +585,6 @@
     "arquitectura": "Apify ejecuta y programa; Apps Script solo LEE el ultimo dataset. Leer no cuesta.",
     "diagnostico": "apifyInspeccionar(\"actor~nombre\") muestra los campos reales de ese actor para rellenar \"campos\".",
     "nota_linkedin": "AUTORIZADO por Andres el 1-sep-2026. La prohibicion de la pestana Configuracion existia para proteger su cuenta del scraping propio. Apify rastrea con SU infraestructura: la cuenta de Andres no interviene en ningun momento y el riesgo para su perfil es cero. Sigue prohibido el scraping directo desde su sesion o con Puppeteer/n8n."
-  }
+  },
+  "_correccion_2026_09_07": "Vercel Greenhouse /vercel: 86 vacantes comprobadas. Publicis SmartRecruiters devuelve cero; revisión en careers.publicisgroupe.com pendiente. El núcleo aplica corrección Vercel también al config remoto."
 }
